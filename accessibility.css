@@ -1,0 +1,161 @@
+/* 
+ * MechanicBoston.com - Accessibility Enhancements
+ * Additional styles to improve accessibility and user experience
+ */
+
+/* Focus styles */
+*:focus {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Skip to content link - hidden until focused */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary);
+  color: white;
+  padding: 8px 16px;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* Enhanced form field accessibility */
+input:focus, 
+select:focus, 
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.25);
+}
+
+/* ARIA attributes styling */
+[aria-invalid="true"] {
+  border: 2px solid #d9534f !important;
+}
+
+.error-message {
+  color: #d9534f;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  display: block;
+}
+
+/* Required field indicators */
+.required-field label::after {
+  content: " *";
+  color: #d9534f;
+}
+
+/* Improved button accessibility */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:active {
+  top: 1px;
+}
+
+/* Improved contrast for emergency buttons */
+.btn-emergency {
+  background-color: #d9534f;
+}
+
+.btn-emergency:hover {
+  background-color: #c9302c;
+}
+
+/* Enhanced table accessibility */
+.pricing-table {
+  border-collapse: collapse;
+}
+
+.pricing-table th {
+  text-align: left;
+}
+
+.pricing-table th, 
+.pricing-table td {
+  padding: 12px;
+}
+
+/* Improved radio and checkbox inputs */
+input[type="radio"],
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.radio-label, 
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+/* High contrast mode accommodations */
+@media (forced-colors: active) {
+  .btn, 
+  .form-group label,
+  h1, h2, h3 {
+    forced-color-adjust: none;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Screen reader only elements */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Print styles for better printing */
+@media print {
+  .site-header, 
+  .main-nav, 
+  .emergency-cta, 
+  .site-footer, 
+  .form-buttons,
+  .mobile-menu-toggle {
+    display: none !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    color: #000;
+    background: #fff;
+  }
+  
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+}
