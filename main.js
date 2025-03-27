@@ -1,30 +1,112 @@
 /**
- * MechanicBoston.com - Main JavaScript
- * Handles site-wide functionality including navigation and UI interactions
+ * MechanicBoston.com - Premium JavaScript
+ * Handles site-wide functionality including navigation, UI interactions, and premium features
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu toggle
+    // Header elements
+    const header = document.querySelector('.site-header');
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     const mainNav = document.querySelector('.main-nav');
     
+    // Create menu overlay for mobile
+    const menuOverlay = document.createElement('div');
+    menuOverlay.className = 'menu-overlay';
+    document.body.appendChild(menuOverlay);
+    
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+    
+    // Mobile menu toggle functionality
     if (menuToggle && mainNav) {
         menuToggle.addEventListener('click', function() {
+            const expanded = this.getAttribute('aria-expanded') === 'true' || false;
+            this.setAttribute('aria-expanded', !expanded);
             mainNav.classList.toggle('active');
-            // Add aria-expanded attribute toggle for accessibility
-            const isExpanded = mainNav.classList.contains('active');
-            menuToggle.setAttribute('aria-expanded', isExpanded);
+            menuOverlay.classList.toggle('active');
+            document.body.style.overflow = expanded ? '' : 'hidden';
         });
     }
     
-    // Close menu when clicking outside
+    // Close menu when clicking outside or on overlay
     document.addEventListener('click', function(event) {
         if (mainNav && mainNav.classList.contains('active')) {
             if (!event.target.closest('.main-nav') && !event.target.closest('.mobile-menu-toggle')) {
                 mainNav.classList.remove('active');
                 menuToggle.setAttribute('aria-expanded', 'false');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
             }
         }
+    });
+    
+    // Dropdown functionality for mobile
+    const dropdowns = document.querySelectorAll('.has-dropdown');
+    
+    dropdowns.forEach(dropdown => {
+        const dropdownLink = dropdown.querySelector('a');
+        
+        dropdownLink.addEventListener('click', function(e) {
+            if (window.innerWidth < 992) {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+            }
+        });
+    });
+    
+    // Add subtle hover effects to nav items
+    const navItems = document.querySelectorAll('.main-nav > ul > li > a:not(.btn)');
+    
+    navItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            navItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.style.opacity = '0.7';
+                }
+            });
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            navItems.forEach(otherItem => {
+                otherItem.style.opacity = '1';
+            });
+        });
+    });
+    
+    // Enhanced dropdown animation
+    const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+    
+    dropdownMenus.forEach(menu => {
+        const items = menu.querySelectorAll('li');
+        
+        items.forEach((item, index) => {
+            item.style.transitionDelay = (index * 0.05) + 's';
+            item.style.transform = 'translateY(10px)';
+            item.style.opacity = '0';
+            item.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+        });
+        
+        const parentDropdown = menu.closest('.has-dropdown');
+        
+        parentDropdown.addEventListener('mouseenter', function() {
+            items.forEach(item => {
+                item.style.transform = 'translateY(0)';
+                item.style.opacity = '1';
+            });
+        });
+        
+        parentDropdown.addEventListener('mouseleave', function() {
+            items.forEach(item => {
+                item.style.transform = 'translateY(10px)';
+                item.style.opacity = '0';
+            });
+        });
     });
     
     // Service dropdown for "other" option
