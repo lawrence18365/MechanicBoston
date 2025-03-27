@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Auto Repair Quotes | MechanicBoston Contact</title>
+    <meta name="description" content="Get free quotes from trusted Boston mechanics. Compare prices and find the right auto repair service for your vehicle needs.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo.svg" alt="MechanicBoston Logo" width="180" height="40">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services/brake-repair.html">Brake Repair</a></li>
+                    <li><a href="services/transmission.html">Transmission</a></li>
+                    <li><a href="services/emergency-towing.html">Emergency Towing</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <div class="container">
+            <div class="contact-hero-content">
+                <h1>Get Free Auto Repair Quotes</h1>
+                <p>Tell us about your repair needs, and we'll connect you with trusted Boston mechanics who can help. Compare quotes and choose the best option for your vehicle.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <div class="container">
+            <div class="contact-columns">
+                <div class="contact-form-column">
+                    <h2>Request Repair Quotes</h2>
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="(617) 555-1234" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="zip-code">ZIP Code</label>
+                                <input type="text" id="zip-code" name="zip-code" maxlength="5" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="preferred-contact">Preferred Contact Method</label>
+                                <select id="preferred-contact" name="preferred-contact" required>
+                                    <option value="email">Email</option>
+                                    <option value="call">Phone Call</option>
+                                    <option value="text">Text Message</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="vehicle-year">Vehicle Year</label>
+                                <input type="number" id="vehicle-year" name="vehicle-year" min="1950" max="2025" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="vehicle-make">Vehicle Make</label>
+                                <input type="text" id="vehicle-make" name="vehicle-make" placeholder="Toyota" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="vehicle-model">Vehicle Model</label>
+                                <input type="text" id="vehicle-model" name="vehicle-model" placeholder="Camry" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service-type">Service Needed</label>
+                            <select id="service-type" name="service-type" required>
+                                <option value="" disabled selected>Select service type</option>
+                                <option value="brake-repair">Brake Repair</option>
+                                <option value="transmission">Transmission Service</option>
+                                <option value="engine">Engine Repair</option>
+                                <option value="oil-change">Oil Change</option>
+                                <option value="tires">Tire Service</option>
+                                <option value="electrical">Electrical System</option>
+                                <option value="ac">A/C Service</option>
+                                <option value="suspension">Suspension</option>
+                                <option value="diagnostics">Check Engine Light / Diagnostics</option>
+                                <option value="emergency">Emergency Repair/Towing</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group" id="other-service-group" style="display: none;">
+                            <label for="other-service">Please Specify Service</label>
+                            <input type="text" id="other-service" name="other-service">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service-details">Describe Your Service Needs</label>
+                            <textarea id="service-details" name="service-details" rows="4" placeholder="Please provide any details about your vehicle issue or service needs..."></textarea>
+                        </div>
+                        
+                        <div class="form-group urgency-group">
+                            <label>How soon do you need this service?</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="urgency" value="emergency">
+                                    <span>Emergency (Today)</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="urgency" value="urgent">
+                                    <span>Urgent (1-2 days)</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="urgency" value="soon" checked>
+                                    <span>Soon (This week)</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="urgency" value="planning">
+                                    <span>Planning ahead</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group consent-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="consent" required>
+                                <span>I consent to receive quotes from MechanicBoston's network of repair shops. I understand my information will be shared with relevant service providers.</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">Get Free Repair Quotes</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info-column">
+                    <div class="contact-info-card">
+                        <h3>Need Immediate Assistance?</h3>
+                        <div class="contact-method">
+                            <img src="assets/icons/phone.svg" alt="Phone" width="24" height="24">
+                            <div class="contact-details">
+                                <p class="method-title">Call Us</p>
+                                <p class="method-value"><a href="tel:6175551234">(617) 555-1234</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <img src="assets/icons/email.svg" alt="Email" width="24" height="24">
+                            <div class="contact-details">
+                                <p class="method-title">Email Us</p>
+                                <p class="method-value"><a href="mailto:info@mechanicboston.com">info@mechanicboston.com</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-hours">
+                            <h4>Hours of Operation</h4>
+                            <ul class="hours-list">
+                                <li><span>Monday - Friday:</span> 7:30 AM - 6:00 PM</li>
+                                <li><span>Saturday:</span> 8:00 AM - 4:00 PM</li>
+                                <li><span>Sunday:</span> Closed</li>
+                            </ul>
+                            <p class="emergency-note">* Emergency assistance available 24/7</p>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="quote">"I was stuck with a transmission issue and needed quick help. MechanicBoston connected me with three qualified shops within an hour, and I had my car fixed the same day!"</p>
+                        <p class="author">- Robert T., Back Bay</p>
+                    </div>
+                    
+                    <div class="benefits-card">
+                        <h3>Why Use MechanicBoston</h3>
+                        <ul class="benefits-list">
+                            <li>Free, no-obligation quotes</li>
+                            <li>All mechanics are certified and vetted</li>
+                            <li>Save up to 30% compared to dealerships</li>
+                            <li>Get multiple quotes to compare options</li>
+                            <li>Quick response - often within 1 hour</li>
+                            <li>Service warranty guarantees</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How MechanicBoston Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">1</div>
+                    <h3>Submit Your Request</h3>
+                    <p>Fill out our simple form with details about your vehicle and service needs.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">2</div>
+                    <h3>Get Multiple Quotes</h3>
+                    <p>Receive competitive quotes from our network of trusted Boston mechanics.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">3</div>
+                    <h3>Book With Confidence</h3>
+                    <p>Compare options and book your service with your preferred mechanic.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h3 class="faq-question">Is there a fee to use MechanicBoston?</h3>
+                    <div class="faq-answer">
+                        <p>No, our quote service is completely free to use. We're paid by our partner shops, not customers.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">How quickly will I receive quotes?</h3>
+                    <div class="faq-answer">
+                        <p>Most customers receive their first quotes within 1 hour during business hours, and all quotes within 24 hours.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">How do you select mechanics?</h3>
+                    <div class="faq-answer">
+                        <p>All mechanics in our network are fully vetted, including verification of proper licensing, insurance, and certification. We also regularly check customer feedback and maintain strict quality standards.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">What areas do you serve?</h3>
+                    <div class="faq-answer">
+                        <p>We serve all neighborhoods in Boston including Allston, Back Bay, Beacon Hill, Brighton, Charlestown, Dorchester, East Boston, Fenway, Hyde Park, Jamaica Plain, Mattapan, Mission Hill, North End, Roslindale, Roxbury, South Boston, South End, and West Roxbury.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Do repairs come with a warranty?</h3>
+                    <div class="faq-answer">
+                        <p>Yes, all services booked through MechanicBoston's network come with a minimum 90-day warranty on parts and labor. Many shops offer longer warranties for specific services.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">What if I'm not satisfied with the service?</h3>
+                    <div class="faq-answer">
+                        <p>Customer satisfaction is our priority. If you're not satisfied with the service, contact us immediately and we'll work with you and the shop to resolve any issues under our satisfaction guarantee.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/images/logo-white.svg" alt="MechanicBoston Logo" width="160" height="36">
+                    <p>Connecting Boston drivers with trusted mechanics since 2025.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services/brake-repair.html">Brake Repair</a></li>
+                        <li><a href="services/transmission.html">Transmission</a></li>
+                        <li><a href="services/emergency-towing.html">Emergency Towing</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><a href="tel:6175551234">(617) 555-1234</a></p>
+                    <p><a href="mailto:info@mechanicboston.com">info@mechanicboston.com</a></p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="Facebook" width="24" height="24"></a>
+                        <a href="#" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="Instagram" width="24" height="24"></a>
+                        <a href="#" aria-label="Twitter"><img src="assets/icons/twitter.svg" alt="Twitter" width="24" height="24"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 MechanicBoston. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/form-handler.js"></script>
+    <script>
+        // FAQ Accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const answer = this.nextElementSibling;
+                    
+                    if (answer.style.maxHeight) {
+                        answer.style.maxHeight = null;
+                    } else {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                    }
+                });
+            });
+            
+            // Show other service input when "Other" is selected
+            const serviceType = document.getElementById('service-type');
+            const otherServiceGroup = document.getElementById('other-service-group');
+            
+            if (serviceType && otherServiceGroup) {
+                serviceType.addEventListener('change', function() {
+                    if (this.value === 'other') {
+                        otherServiceGroup.style.display = 'block';
+                        document.getElementById('other-service').setAttribute('required', 'required');
+                    } else {
+                        otherServiceGroup.style.display = 'none';
+                        document.getElementById('other-service').removeAttribute('required');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
