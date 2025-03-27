@@ -1,0 +1,497 @@
+/* 
+ * MechanicBoston.com - Blog Styles
+ * Styling for the blog section and article pages
+ */
+
+/* Blog Hero */
+.blog-hero {
+    background-color: var(--light);
+    padding: 60px 0;
+    text-align: center;
+}
+
+.blog-hero h1 {
+    margin-bottom: 20px;
+    color: var(--dark);
+}
+
+.blog-hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--secondary);
+}
+
+/* Blog Categories */
+.blog-categories {
+    background-color: white;
+    border-bottom: 1px solid var(--light-gray);
+    margin-bottom: 30px;
+}
+
+.category-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 0 20px;
+    gap: 10px;
+}
+
+.category-tabs .category-tab {
+    display: block;
+    padding: 15px 20px;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    color: var(--gray);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.category-tabs .category-tab:hover {
+    color: var(--primary);
+}
+
+.category-tabs .category-tab.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+    font-weight: 600;
+}
+
+/* Featured Article */
+.featured-article {
+    padding: 30px 0;
+}
+
+.featured-article-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    background-color: white;
+}
+
+.featured-article .article-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.featured-article .article-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.featured-article-card:hover .article-image img {
+    transform: scale(1.03);
+}
+
+.featured-article .article-content {
+    padding: 0 30px 30px;
+}
+
+.featured-article h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.article-tag {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: var(--primary);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.article-excerpt {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* Article Grid */
+.article-grid {
+    padding: 30px 0 60px;
+    background-color: var(--light);
+}
+
+.article-grid h2 {
+    margin-bottom: 30px;
+}
+
+.articles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.article-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+}
+
+.article-card .article-image {
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+
+.article-card .article-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.article-card:hover .article-image img {
+    transform: scale(1.05);
+}
+
+.article-card .article-content {
+    padding: 20px;
+}
+
+.article-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+.article-card h3 a {
+    color: var(--dark);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.article-card h3 a:hover {
+    color: var(--primary);
+}
+
+.article-card .article-meta {
+    margin-bottom: 10px;
+}
+
+.article-card .article-excerpt {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--secondary);
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.current-page {
+    color: var(--gray);
+}
+
+.page-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.page-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    color: var(--dark);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid var(--light-gray);
+}
+
+.page-button.next {
+    width: auto;
+    padding: 0 15px;
+    border-radius: 20px;
+}
+
+.page-button:hover {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.page-button.current {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* Subscribe Section */
+.subscribe-section {
+    background-color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.subscribe-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.subscribe-content h2 {
+    margin-bottom: 15px;
+}
+
+.subscribe-content p {
+    margin-bottom: 30px;
+}
+
+.subscribe-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.subscribe-form .form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.subscribe-form .form-group {
+    flex: 1;
+}
+
+.subscribe-form input[type="email"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+}
+
+.subscribe-form .consent-group {
+    text-align: left;
+    font-size: 0.8rem;
+}
+
+/* Single Article Page */
+.article-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.article-header h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    line-height: 1.2;
+}
+
+.article-featured-image {
+    margin-bottom: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.article-featured-image img {
+    width: 100%;
+    height: auto;
+}
+
+.article-body {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.article-body p,
+.article-body ul,
+.article-body ol,
+.article-body blockquote {
+    margin-bottom: 1.5rem;
+}
+
+.article-body h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    text-align: left;
+}
+
+.article-body h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.article-body ul,
+.article-body ol {
+    padding-left: 1.5rem;
+}
+
+.article-body li {
+    margin-bottom: 0.5rem;
+}
+
+.article-body blockquote {
+    border-left: 4px solid var(--primary);
+    padding-left: 1.5rem;
+    font-style: italic;
+    color: var(--gray);
+}
+
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+.article-footer {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid var(--light-gray);
+}
+
+.article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.article-tags a {
+    display: inline-block;
+    padding: 5px 12px;
+    background-color: var(--light);
+    color: var(--primary);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.article-tags a:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+.article-author {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: var(--light);
+    border-radius: 8px;
+}
+
+.author-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.author-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.author-bio h3 {
+    margin-bottom: 5px;
+}
+
+.author-bio p {
+    color: var(--secondary);
+    font-size: 0.95rem;
+}
+
+.related-articles {
+    margin-top: 60px;
+}
+
+.related-articles h2 {
+    margin-bottom: 30px;
+}
+
+.related-articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .articles {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .related-articles-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .featured-article-card {
+        grid-template-columns: 1fr;
+    }
+    
+    .featured-article .article-content {
+        padding: 20px;
+    }
+    
+    .subscribe-form .form-row {
+        flex-direction: column;
+    }
+    
+    .article-header h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .articles {
+        grid-template-columns: 1fr;
+    }
+    
+    .related-articles-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .page-buttons {
+        gap: 5px;
+    }
+    
+    .page-button {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .article-author {
+        flex-direction: column;
+        text-align: center;
+    }
+}
