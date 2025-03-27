@@ -1,10 +1,12 @@
 /**
- * MechanicBoston.com - Premium JavaScript
- * Handles site-wide functionality including navigation, UI interactions, and premium features
+ * MechanicBoston.com - Combined JavaScript
+ * Handles site-wide functionality including header, navigation, and form interactions
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Header elements
+    // ======================================================
+    // Header & Navigation Functionality
+    // ======================================================
     const header = document.querySelector('.site-header');
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     const mainNav = document.querySelector('.main-nav');
@@ -35,14 +37,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Close menu when clicking outside or on overlay
-    document.addEventListener('click', function(event) {
+    menuOverlay.addEventListener('click', function() {
         if (mainNav && mainNav.classList.contains('active')) {
-            if (!event.target.closest('.main-nav') && !event.target.closest('.mobile-menu-toggle')) {
-                mainNav.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
-                menuOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
+            mainNav.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
         }
     });
     
@@ -108,11 +108,17 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
-    
-    // Service dropdown for "other" option
+
+    // ======================================================
+    // Form Handling and Validation
+    // ======================================================
+    const quoteForm = document.getElementById('quick-quote-form');
     const serviceTypeSelect = document.getElementById('service-type');
     const otherServiceGroup = document.getElementById('other-service-group');
+    const zipCodeInput = document.getElementById('zip-code');
+    const phoneInput = document.getElementById('phone');
     
+    // Service dropdown for "other" option
     if (serviceTypeSelect && otherServiceGroup) {
         serviceTypeSelect.addEventListener('change', function() {
             if (this.value === 'other') {
@@ -125,14 +131,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Simple form validation for ZIP code (numbers only)
-    const zipCodeInput = document.getElementById('zip-code');
+    // Basic phone number formatting
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function(e) {
+            const x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        });
+    }
     
+    // ZIP code input (numbers only)
     if (zipCodeInput) {
         zipCodeInput.addEventListener('input', function() {
             this.value = this.value.replace(/[^0-9]/g, '');
         });
     }
+    
+    // Remove error styling when user starts typing (for all forms)
+    document.querySelectorAll('input, select').forEach(input => {
+        input.addEventListener('input', function() {
+            this.classList.remove('error');
+            if (this.nextElementSibling && this.nextElementSibling.classList.contains('error-message')) {
+                this.nextElementSibling.remove();
+            }
+        });
+    });
     
     // Multi-step form navigation
     const formSteps = document.querySelectorAll('.form-step');
@@ -193,23 +215,154 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Remove error styling when user starts typing
-    document.querySelectorAll('input, select').forEach(input => {
-        input.addEventListener('input', function() {
-            this.classList.remove('error');
-            if (this.nextElementSibling && this.nextElementSibling.classList.contains('error-message')) {
-                this.nextElementSibling.remove();
+    // Quote Form Specific Handling
+    if (quoteForm) {
+        // Smooth scroll to form when clicking the CTA button
+        const ctaButton = document.querySelector('.btn-hero');
+        if (ctaButton) {
+            ctaButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                const formSection = document.getElementById('quote-form');
+                if (formSection) {
+                    formSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        }
+        
+        // Form submission handling
+        quoteForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic form validation
+            const required = this.querySelectorAll('[required]');
+            let isValid = true;
+            
+            required.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.classList.add('error');
+                    
+                    // Remove error class on input
+                    field.addEventListener('input', function() {
+                        if (this.value.trim()) {
+                            this.classList.remove('error');
+                        }
+                    }, { once: true });
+                } else {
+                    field.classList.remove('error');
+                }
+            });
+            
+            // ZIP code validation
+            if (zipCodeInput && zipCodeInput.value) {
+                const zipRegex = /^\d{5}$/;
+                if (!zipRegex.test(zipCodeInput.value)) {
+                    isValid = false;
+                    zipCodeInput.classList.add('error');
+                }
+            }
+            
+            // Phone validation
+            if (phoneInput && phoneInput.value) {
+                // Allow various phone formats
+                const phoneRegex = /^[\d\s\-\(\)\.]{10,15}$/;
+                if (!phoneRegex.test(phoneInput.value)) {
+                    isValid = false;
+                    phoneInput.classList.add('error');
+                }
+            }
+            
+            if (isValid) {
+                // Show loading state
+                const submitBtn = quoteForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<div class="spinner"></div> Processing...';
+                
+                // Simulate form submission (replace with actual form submission)
+                setTimeout(() => {
+                    // Replace form with success message
+                    quoteForm.innerHTML = `
+                        <div class="form-success">
+                            <div class="success-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#0057b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M8 12l2 2 4-4"></path>
+                                </svg>
+                            </div>
+                            <h3>Quote Request Received!</h3>
+                            <p>Thank you for submitting your quote request. We're reaching out to our network of mechanics in your area.</p>
+                            <p>You'll receive your quotes via email and text shortly. Be sure to check your inbox!</p>
+                        </div>
+                    `;
+                }, 1500);
+            } else {
+                // Scroll to first error
+                const firstError = quoteForm.querySelector('.error');
+                if (firstError) {
+                    firstError.focus();
+                }
             }
         });
-    });
-    
-    // Basic phone number formatting
-    const phoneInput = document.getElementById('phone');
-    
-    if (phoneInput) {
-        phoneInput.addEventListener('input', function(e) {
-            const x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
-        });
     }
+    
+    // Add CSS for form validation and success state
+    const style = document.createElement('style');
+    style.textContent = `
+        .error {
+            border-color: #ef4444 !important;
+            background-color: #fef2f2 !important;
+        }
+        
+        .error-message {
+            color: #ef4444;
+            font-size: 1.3rem;
+            margin-top: 0.5rem;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .form-success {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+        
+        .success-icon {
+            display: inline-block;
+            background-color: #f0f9ff;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .form-success h3 {
+            font-size: 2.2rem;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-success p {
+            font-size: 1.6rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+    `;
+    document.head.appendChild(style);
 });
