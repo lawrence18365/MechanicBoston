@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MechanicBoston - Find Top-Rated Auto Repair Services in Boston</title>
+    <meta name="description" content="Connect with trusted mechanics in Boston for brake repair, transmission service, and emergency towing. Get same-day quotes from certified local mechanics.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo.svg" alt="MechanicBoston Logo" width="180" height="40">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services/brake-repair.html">Brake Repair</a></li>
+                    <li><a href="services/transmission.html">Transmission</a></li>
+                    <li><a href="services/emergency-towing.html">Emergency Towing</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html" class="btn btn-primary">Get a Quote</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Find Top-Rated Auto Repair in Boston in 60 Seconds</h1>
+                <p>Get matched with trusted mechanics who specialize in your specific repair needs, all vetted and rated by Boston drivers.</p>
+                
+                <!-- Lead Generation Form -->
+                <div class="lead-form-container">
+                    <form id="quick-quote-form" class="lead-form">
+                        <h2>Get Your Free Repair Quote</h2>
+                        
+                        <div class="form-step active" id="step1">
+                            <div class="form-group">
+                                <label for="service-type">What service do you need?</label>
+                                <select id="service-type" name="service-type" required>
+                                    <option value="" disabled selected>Select a service</option>
+                                    <option value="brake-repair">Brake Repair</option>
+                                    <option value="transmission">Transmission Service</option>
+                                    <option value="emergency">Emergency Towing</option>
+                                    <option value="other">Other (please specify)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group" id="other-service-group" style="display: none;">
+                                <label for="other-service">Please specify:</label>
+                                <input type="text" id="other-service" name="other-service">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="zip-code">Your ZIP Code:</label>
+                                <input type="text" id="zip-code" name="zip-code" placeholder="02108" maxlength="5" required>
+                            </div>
+                            
+                            <button type="button" class="btn btn-primary btn-block next-step">Continue</button>
+                        </div>
+                        
+                        <div class="form-step" id="step2">
+                            <div class="form-group">
+                                <label for="vehicle-year">Vehicle Year:</label>
+                                <input type="number" id="vehicle-year" name="vehicle-year" min="1950" max="2025" placeholder="2018" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="vehicle-make">Vehicle Make:</label>
+                                <input type="text" id="vehicle-make" name="vehicle-make" placeholder="Toyota" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="vehicle-model">Vehicle Model:</label>
+                                <input type="text" id="vehicle-model" name="vehicle-model" placeholder="Camry" required>
+                            </div>
+                            
+                            <div class="form-buttons">
+                                <button type="button" class="btn btn-secondary prev-step">Back</button>
+                                <button type="button" class="btn btn-primary next-step">Continue</button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-step" id="step3">
+                            <div class="form-group">
+                                <label for="name">Your Name:</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number:</label>
+                                <input type="tel" id="phone" name="phone" placeholder="(617) 555-1234" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="urgency">How soon do you need service?</label>
+                                <select id="urgency" name="urgency" required>
+                                    <option value="emergency">Emergency (Today)</option>
+                                    <option value="urgent">Urgent (1-2 days)</option>
+                                    <option value="soon" selected>Soon (This week)</option>
+                                    <option value="planning">Planning ahead</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-buttons">
+                                <button type="button" class="btn btn-secondary prev-step">Back</button>
+                                <button type="submit" class="btn btn-primary">Get Free Quotes</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="assets/images/hero.jpg" alt="Mechanic working on a car in Boston" width="600" height="400">
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How MechanicBoston Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">1</div>
+                    <h3>Tell Us Your Needs</h3>
+                    <p>Answer a few quick questions about your vehicle and service needs.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">2</div>
+                    <h3>Get Matched</h3>
+                    <p>We'll connect you with top-rated Boston mechanics who specialize in your repair.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">3</div>
+                    <h3>Compare & Choose</h3>
+                    <p>Review quotes, credentials, and availability then book your service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Services -->
+    <section class="featured-services">
+        <div class="container">
+            <h2>Our Most Popular Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="assets/images/service-1.jpg" alt="Brake repair service" width="350" height="200">
+                    <h3>Brake Repair</h3>
+                    <p>Complete brake services including pad replacement, rotor resurfacing, and brake fluid flush.</p>
+                    <a href="services/brake-repair.html" class="btn btn-secondary">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <img src="assets/images/service-2.jpg" alt="Transmission service" width="350" height="200">
+                    <h3>Transmission Service</h3>
+                    <p>Transmission repair, fluid changes, and complete transmission replacement services.</p>
+                    <a href="services/transmission.html" class="btn btn-secondary">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <img src="assets/images/service-3.jpg" alt="Emergency towing" width="350" height="200">
+                    <h3>Emergency Towing</h3>
+                    <p>24/7 emergency towing and roadside assistance throughout the Boston area.</p>
+                    <a href="services/emergency-towing.html" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="trust-badges">
+        <div class="container">
+            <div class="badges">
+                <div class="badge">
+                    <img src="assets/icons/certified.svg" alt="Certified mechanics" width="60" height="60">
+                    <p>ASE Certified Mechanics</p>
+                </div>
+                <div class="badge">
+                    <img src="assets/icons/warranty.svg" alt="Guaranteed work" width="60" height="60">
+                    <p>90-Day Minimum Warranty</p>
+                </div>
+                <div class="badge">
+                    <img src="assets/icons/price.svg" alt="Fair pricing" width="60" height="60">
+                    <p>Fair & Transparent Pricing</p>
+                </div>
+                <div class="badge">
+                    <img src="assets/icons/shield.svg" alt="Vetted shops" width="60" height="60">
+                    <p>Vetted & Background Checked</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Boston Drivers Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Found a great mechanic for my Honda through MechanicBoston. Saved over $200 compared to the dealer quote. Will definitely use again!"</p>
+                    <p class="author">- Michael S., South Boston</p>
+                </div>
+                <!-- More testimonials would be cycled through here with JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency CTA -->
+    <section class="emergency-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Car Trouble? Don't Wait!</h2>
+                <p>Our emergency service connects you with available mechanics and towing 24/7.</p>
+                <a href="tel:6175551234" class="btn btn-emergency">
+                    <img src="assets/icons/phone.svg" alt="Call now" width="24" height="24">
+                    Call Now: (617) 555-1234
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/images/logo-white.svg" alt="MechanicBoston Logo" width="160" height="36">
+                    <p>Connecting Boston drivers with trusted mechanics since 2025.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services/brake-repair.html">Brake Repair</a></li>
+                        <li><a href="services/transmission.html">Transmission</a></li>
+                        <li><a href="services/emergency-towing.html">Emergency Towing</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><a href="tel:6175551234">(617) 555-1234</a></p>
+                    <p><a href="mailto:info@mechanicboston.com">info@mechanicboston.com</a></p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="Facebook" width="24" height="24"></a>
+                        <a href="#" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="Instagram" width="24" height="24"></a>
+                        <a href="#" aria-label="Twitter"><img src="assets/icons/twitter.svg" alt="Twitter" width="24" height="24"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 MechanicBoston. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/form-handler.js"></script>
+</body>
+</html>
