@@ -7,10 +7,29 @@
     <meta name="description" content="Connect with trusted mechanics in Boston for brake repair, transmission service, and emergency towing. Get same-day quotes from certified local mechanics.">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="css/accessibility.css">
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <!-- SEO meta tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="Boston mechanic, auto repair Boston, car repair, brake repair, transmission service, emergency towing, mechanic quotes">
+    <link rel="canonical" href="https://mechanicboston.com/">
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="MechanicBoston - Find Top-Rated Auto Repair Services">
+    <meta property="og:description" content="Connect with trusted mechanics in Boston for auto repair, transmission service, and emergency towing.">
+    <meta property="og:url" content="https://mechanicboston.com/">
+    <meta property="og:image" content="https://mechanicboston.com/assets/images/og-image.jpg">
+    <meta property="og:type" content="website">
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MechanicBoston - Auto Repair Services">
+    <meta name="twitter:description" content="Find trusted mechanics in Boston. Get free quotes for auto repair services.">
+    <meta name="twitter:image" content="https://mechanicboston.com/assets/images/twitter-image.jpg">
 </head>
 <body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+
     <!-- Header -->
     <header class="site-header">
         <div class="container">
@@ -19,24 +38,32 @@
                     <img src="assets/images/logo.svg" alt="MechanicBoston Logo" width="180" height="40">
                 </a>
             </div>
-            <nav class="main-nav">
+            <nav class="main-nav" aria-label="Main Navigation">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html" aria-current="page">Home</a></li>
                     <li><a href="services/brake-repair.html">Brake Repair</a></li>
                     <li><a href="services/transmission.html">Transmission</a></li>
                     <li><a href="services/emergency-towing.html">Emergency Towing</a></li>
+                    <li class="has-dropdown">
+                        <a href="#" aria-haspopup="true">Neighborhoods</a>
+                        <ul class="dropdown-menu" aria-label="submenu">
+                            <li><a href="neighborhoods/dorchester.html">Dorchester</a></li>
+                            <li><a href="#" class="coming-soon">South Boston <span>(Coming Soon)</span></a></li>
+                            <li><a href="#" class="coming-soon">Roxbury <span>(Coming Soon)</span></a></li>
+                        </ul>
+                    </li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html" class="btn btn-primary">Get a Quote</a></li>
                 </ul>
             </nav>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
                 <span></span><span></span><span></span>
             </button>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="main-content">
         <div class="container">
             <div class="hero-content">
                 <h1>Find Top-Rated Auto Repair in Boston in 60 Seconds</h1>
@@ -44,17 +71,20 @@
                 
                 <!-- Lead Generation Form -->
                 <div class="lead-form-container">
-                    <form id="quick-quote-form" class="lead-form">
-                        <h2>Get Your Free Repair Quote</h2>
+                    <form id="quick-quote-form" class="lead-form" aria-labelledby="form-title">
+                        <h2 id="form-title">Get Your Free Repair Quote</h2>
                         
-                        <div class="form-step active" id="step1">
-                            <div class="form-group">
+                        <div class="form-step active" id="step1" role="tabpanel" aria-labelledby="step1-heading">
+                            <h3 id="step1-heading" class="sr-only">Step 1: Service Information</h3>
+                            <div class="form-group required-field">
                                 <label for="service-type">What service do you need?</label>
-                                <select id="service-type" name="service-type" required>
+                                <select id="service-type" name="service-type" required aria-required="true">
                                     <option value="" disabled selected>Select a service</option>
                                     <option value="brake-repair">Brake Repair</option>
                                     <option value="transmission">Transmission Service</option>
                                     <option value="emergency">Emergency Towing</option>
+                                    <option value="oil-change">Oil Change</option>
+                                    <option value="check-engine">Check Engine Light</option>
                                     <option value="other">Other (please specify)</option>
                                 </select>
                             </div>
@@ -64,55 +94,58 @@
                                 <input type="text" id="other-service" name="other-service">
                             </div>
                             
-                            <div class="form-group">
+                            <div class="form-group required-field">
                                 <label for="zip-code">Your ZIP Code:</label>
-                                <input type="text" id="zip-code" name="zip-code" placeholder="02108" maxlength="5" required>
+                                <input type="text" id="zip-code" name="zip-code" placeholder="02108" maxlength="5" required aria-required="true">
+                                <span id="zip-error" class="error-message" role="alert" hidden></span>
                             </div>
                             
-                            <button type="button" class="btn btn-primary btn-block next-step">Continue</button>
+                            <button type="button" class="btn btn-primary btn-block next-step" aria-controls="step2">Continue</button>
                         </div>
                         
-                        <div class="form-step" id="step2">
-                            <div class="form-group">
+                        <div class="form-step" id="step2" role="tabpanel" aria-labelledby="step2-heading">
+                            <h3 id="step2-heading" class="sr-only">Step 2: Vehicle Information</h3>
+                            <div class="form-group required-field">
                                 <label for="vehicle-year">Vehicle Year:</label>
-                                <input type="number" id="vehicle-year" name="vehicle-year" min="1950" max="2025" placeholder="2018" required>
+                                <input type="number" id="vehicle-year" name="vehicle-year" min="1950" max="2025" placeholder="2018" required aria-required="true">
                             </div>
                             
-                            <div class="form-group">
+                            <div class="form-group required-field">
                                 <label for="vehicle-make">Vehicle Make:</label>
-                                <input type="text" id="vehicle-make" name="vehicle-make" placeholder="Toyota" required>
+                                <input type="text" id="vehicle-make" name="vehicle-make" placeholder="Toyota" required aria-required="true">
                             </div>
                             
-                            <div class="form-group">
+                            <div class="form-group required-field">
                                 <label for="vehicle-model">Vehicle Model:</label>
-                                <input type="text" id="vehicle-model" name="vehicle-model" placeholder="Camry" required>
+                                <input type="text" id="vehicle-model" name="vehicle-model" placeholder="Camry" required aria-required="true">
                             </div>
                             
                             <div class="form-buttons">
-                                <button type="button" class="btn btn-secondary prev-step">Back</button>
-                                <button type="button" class="btn btn-primary next-step">Continue</button>
+                                <button type="button" class="btn btn-secondary prev-step" aria-controls="step1">Back</button>
+                                <button type="button" class="btn btn-primary next-step" aria-controls="step3">Continue</button>
                             </div>
                         </div>
                         
-                        <div class="form-step" id="step3">
-                            <div class="form-group">
+                        <div class="form-step" id="step3" role="tabpanel" aria-labelledby="step3-heading">
+                            <h3 id="step3-heading" class="sr-only">Step 3: Contact Information</h3>
+                            <div class="form-group required-field">
                                 <label for="name">Your Name:</label>
-                                <input type="text" id="name" name="name" required>
+                                <input type="text" id="name" name="name" required aria-required="true">
                             </div>
                             
-                            <div class="form-group">
+                            <div class="form-group required-field">
                                 <label for="phone">Phone Number:</label>
-                                <input type="tel" id="phone" name="phone" placeholder="(617) 555-1234" required>
+                                <input type="tel" id="phone" name="phone" placeholder="(617) 555-1234" required aria-required="true">
                             </div>
                             
-                            <div class="form-group">
+                            <div class="form-group required-field">
                                 <label for="email">Email:</label>
-                                <input type="email" id="email" name="email" required>
+                                <input type="email" id="email" name="email" required aria-required="true">
                             </div>
                             
-                            <div class="form-group">
+                            <div class="form-group required-field">
                                 <label for="urgency">How soon do you need service?</label>
-                                <select id="urgency" name="urgency" required>
+                                <select id="urgency" name="urgency" required aria-required="true">
                                     <option value="emergency">Emergency (Today)</option>
                                     <option value="urgent">Urgent (1-2 days)</option>
                                     <option value="soon" selected>Soon (This week)</option>
@@ -120,8 +153,15 @@
                                 </select>
                             </div>
                             
+                            <div class="form-group consent-group required-field">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="consent" required aria-required="true">
+                                    <span>I agree to receive quotes from MechanicBoston's network of repair shops.</span>
+                                </label>
+                            </div>
+                            
                             <div class="form-buttons">
-                                <button type="button" class="btn btn-secondary prev-step">Back</button>
+                                <button type="button" class="btn btn-secondary prev-step" aria-controls="step2">Back</button>
                                 <button type="submit" class="btn btn-primary">Get Free Quotes</button>
                             </div>
                         </div>
@@ -239,7 +279,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="site-footer">
+    <footer class="site-footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
@@ -248,24 +288,29 @@
                 </div>
                 <div class="footer-links">
                     <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="services/brake-repair.html">Brake Repair</a></li>
-                        <li><a href="services/transmission.html">Transmission</a></li>
-                        <li><a href="services/emergency-towing.html">Emergency Towing</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                    </ul>
+                    <nav aria-label="Footer Navigation">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="services/brake-repair.html">Brake Repair</a></li>
+                            <li><a href="services/transmission.html">Transmission</a></li>
+                            <li><a href="services/emergency-towing.html">Emergency Towing</a></li>
+                            <li><a href="neighborhoods/dorchester.html">Dorchester</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        </ul>
+                    </nav>
                 </div>
                 <div class="footer-contact">
                     <h3>Contact Us</h3>
-                    <p><a href="tel:6175551234">(617) 555-1234</a></p>
-                    <p><a href="mailto:info@mechanicboston.com">info@mechanicboston.com</a></p>
+                    <address>
+                        <p><a href="tel:6175551234">(617) 555-1234</a></p>
+                        <p><a href="mailto:info@mechanicboston.com">info@mechanicboston.com</a></p>
+                    </address>
                     <div class="social-links">
-                        <a href="#" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="Facebook" width="24" height="24"></a>
-                        <a href="#" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="Instagram" width="24" height="24"></a>
-                        <a href="#" aria-label="Twitter"><img src="assets/icons/twitter.svg" alt="Twitter" width="24" height="24"></a>
+                        <a href="https://www.facebook.com/mechanicboston" aria-label="Facebook" target="_blank" rel="noopener"><img src="assets/icons/facebook.svg" alt="" width="24" height="24"><span class="sr-only">Facebook</span></a>
+                        <a href="https://www.instagram.com/mechanicboston" aria-label="Instagram" target="_blank" rel="noopener"><img src="assets/icons/instagram.svg" alt="" width="24" height="24"><span class="sr-only">Instagram</span></a>
+                        <a href="https://twitter.com/mechanicboston" aria-label="Twitter" target="_blank" rel="noopener"><img src="assets/icons/twitter.svg" alt="" width="24" height="24"><span class="sr-only">Twitter</span></a>
                     </div>
                 </div>
             </div>
@@ -278,5 +323,7 @@
     <!-- Scripts -->
     <script src="js/main.js"></script>
     <script src="js/form-handler.js"></script>
+    <script src="js/schema.js"></script>
+    <script src="js/cookie-consent.js"></script>
 </body>
 </html>
