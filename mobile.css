@@ -1,0 +1,143 @@
+/* 
+ * MechanicBoston.com - Mobile Styles
+ * Media queries for responsive layout
+ */
+
+/* Tablets and smaller devices */
+@media (max-width: 992px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+  }
+  
+  /* Header & Navigation */
+  .main-nav {
+    display: none;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .main-nav.active {
+    display: block;
+  }
+  
+  .main-nav ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .mobile-menu-toggle {
+    display: block;
+  }
+  
+  /* Hero Section */
+  .hero .container {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-content {
+    order: 1;
+    max-width: 100%;
+  }
+  
+  .hero-image {
+    order: 0;
+    margin-bottom: 30px;
+  }
+  
+  /* How It Works */
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  /* Featured Services */
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  /* Trust Badges */
+  .badges {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  /* Footer */
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 576px) {
+  body {
+    font-size: 0.95rem;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  /* Container */
+  .container {
+    padding: 0 15px;
+  }
+  
+  /* Lead Form */
+  .lead-form-container {
+    padding: 20px 15px;
+  }
+  
+  /* Form Buttons */
+  .form-buttons {
+    flex-direction: column;
+  }
+  
+  .form-buttons button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  /* Trust Badges */
+  .badges {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Emergency CTA */
+  .emergency-cta {
+    padding: 40px 0;
+  }
+  
+  .btn-emergency {
+    width: 100%;
+  }
+}
+
+/* Custom adjustments for very small screens */
+@media (max-width: 360px) {
+  .logo img {
+    height: 30px;
+  }
+  
+  h1 {
+    font-size: 1.6rem;
+  }
+  
+  .hero {
+    padding: 40px 0;
+  }
+}
