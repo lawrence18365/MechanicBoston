@@ -1,0 +1,11 @@
+# robots.txt for MechanicBoston.com
+
+User-agent: *
+Allow: /
+Disallow: /assets/
+
+# Optimized crawl rate
+Crawl-delay: 1
+
+# Sitemaps
+Sitemap: https://mechanicboston.com/sitemap.xml
