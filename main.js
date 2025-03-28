@@ -478,3 +478,146 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
 });
+// Clean and Professional Quote Form JS
+document.addEventListener('DOMContentLoaded', function() {
+    // Elements
+    const quoteForm = document.getElementById('quick-quote-form');
+    const serviceSelect = document.getElementById('service-type');
+    const zipInput = document.getElementById('zip-code');
+    const phoneInput = document.getElementById('phone');
+    
+    // Format phone number as user types
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function(e) {
+            const input = e.target.value.replace(/\D/g, '').substring(0, 10);
+            const areaCode = input.substring(0, 3);
+            const middle = input.substring(3, 6);
+            const last = input.substring(6, 10);
+            
+            if (input.length > 6) {
+                e.target.value = `(${areaCode}) ${middle}-${last}`;
+            } else if (input.length > 3) {
+                e.target.value = `(${areaCode}) ${middle}`;
+            } else if (input.length > 0) {
+                e.target.value = `(${areaCode}`;
+            }
+        });
+    }
+    
+    // Validate ZIP code - numbers only
+    if (zipInput) {
+        zipInput.addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/\D/g, '').substring(0, 5);
+        });
+    }
+    
+    // Set pre-selected service if coming from navigation
+    function setSelectedService() {
+        const storedService = sessionStorage.getItem('selectedService');
+        if (storedService && serviceSelect) {
+            // Find matching option
+            Array.from(serviceSelect.options).forEach(option => {
+                if (option.value === storedService) {
+                    option.selected = true;
+                }
+            });
+        }
+    }
+    
+    // Add visual feedback to form fields
+    function enhanceFormFields() {
+        const formInputs = document.querySelectorAll('.form-group input, .form-group select');
+        
+        formInputs.forEach(input => {
+            // Add active class when field has value
+            if (input.value) {
+                input.classList.add('has-value');
+            }
+            
+            // Update on change
+            input.addEventListener('change', function() {
+                if (this.value) {
+                    this.classList.add('has-value');
+                } else {
+                    this.classList.remove('has-value');
+                }
+            });
+            
+            // Focus effects
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('is-focused');
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.classList.remove('is-focused');
+            });
+        });
+    }
+    
+    // Form submission handling
+    if (quoteForm) {
+        quoteForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic validation
+            let valid = true;
+            const requiredInputs = quoteForm.querySelectorAll('input[required], select[required]');
+            
+            requiredInputs.forEach(input => {
+                if (!input.value.trim()) {
+                    valid = false;
+                    input.classList.add('is-invalid');
+                    
+                    input.addEventListener('input', function() {
+                        if (this.value.trim()) {
+                            this.classList.remove('is-invalid');
+                        }
+                    }, { once: true });
+                }
+            });
+            
+            // If valid, show loading state
+            if (valid) {
+                const submitBtn = quoteForm.querySelector('.btn-primary');
+                const originalText = submitBtn.textContent;
+                
+                submitBtn.innerHTML = '<span class="loading-spinner"></span> Processing...';
+                submitBtn.disabled = true;
+                
+                // Simulate form submission (replace with actual AJAX)
+                setTimeout(function() {
+                    // Show success state
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Request Sent!';
+                    submitBtn.classList.add('btn-success');
+                    
+                    // Reset form after delay
+                    setTimeout(function() {
+                        quoteForm.reset();
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('btn-success');
+                        
+                        // Show success message
+                        const formHeading = document.querySelector('.form-heading');
+                        if (formHeading) {
+                            formHeading.innerHTML = `
+                                <h3>Thank You!</h3>
+                                <p>Your request has been received. A mechanic will contact you shortly.</p>
+                            `;
+                        }
+                    }, 2000);
+                }, 1500);
+            }
+        });
+    }
+    
+    // Initialize
+    setSelectedService();
+    enhanceFormFields();
+    
+    // Add subtle animation to testimonial
+    const testimonial = document.querySelector('.testimonial');
+    if (testimonial) {
+        testimonial.classList.add('animate-in');
+    }
+});
