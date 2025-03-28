@@ -1090,60 +1090,122 @@ input.error, select.error {
   stroke: #ff6600;
 }
 
-/* ======================================================
-   QUICK FORM SECTION
-====================================================== */
-
-.quick-form-section {
-  background-color: #f8f9fa;
-  padding: 8rem 0;
-  margin-top: -2rem;
+/* Premium Quote Form Section Styles */
+.quote-section {
   position: relative;
-  z-index: 2;
+  background-color: var(--neutral-200);
+  padding: 10rem 0;
+  overflow: hidden;
+  z-index: 1;
 }
 
-.quick-form-section .container {
+/* Decorative floating graphics */
+.floating-graphic {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.5;
+  background: linear-gradient(135deg, var(--brand-primary-light), rgba(255, 85, 0, 0.1));
+  z-index: -1;
+}
+
+.graphic-1 {
+  width: 40rem;
+  height: 40rem;
+  top: -15rem;
+  left: -20rem;
+  animation: float 15s ease-in-out infinite;
+}
+
+.graphic-2 {
+  width: 25rem;
+  height: 25rem;
+  bottom: 10%;
+  right: -10rem;
+  animation: float 18s ease-in-out infinite reverse;
+}
+
+.graphic-3 {
+  width: 15rem;
+  height: 15rem;
+  top: 30%;
+  right: 15%;
+  animation: float 12s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(15px, -15px) rotate(5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* Main layout grid */
+.quote-grid {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: 3rem;
   align-items: start;
 }
 
-.form-container {
-  background-color: #ffffff;
-  border-radius: 1rem;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+/* Form Card */
+.form-card {
+  background-color: var(--neutral-100);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
   overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition);
+  border: 1px solid var(--neutral-300);
+  position: relative;
 }
 
+.form-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Form Header */
 .form-header {
-  background-color: #f5f9fd;
-  padding: 3rem;
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-primary-dark));
+  padding: 3.5rem;
   text-align: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+  color: var(--neutral-100);
+}
+
+.form-badge {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 2rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .form-header h2 {
-  font-size: 2.6rem;
-  color: #0a2540;
-  margin-bottom: 1rem;
+  color: white;
+  margin-bottom: 1.2rem;
+  font-size: 3rem;
 }
 
-.form-header p {
+.form-subtitle {
+  color: rgba(255, 255, 255, 0.9);
   font-size: 1.7rem;
-  color: #64748b;
   margin-bottom: 0;
 }
 
+/* Form Body */
 .quote-form {
-  padding: 3rem;
+  padding: 3.5rem;
 }
 
 .form-row {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .form-group {
@@ -1153,111 +1215,239 @@ input.error, select.error {
 .form-group label {
   display: block;
   font-size: 1.5rem;
-  font-weight: 500;
-  margin-bottom: 0.8rem;
-  color: #334155;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
 }
 
-.form-group input,
-.form-group select {
+.required {
+  color: var(--danger);
+  font-weight: bold;
+}
+
+.optional {
+  color: var(--neutral-600);
+  font-weight: normal;
+  font-size: 1.3rem;
+}
+
+/* Input Styling */
+.input-wrapper,
+.select-wrapper {
+  position: relative;
+}
+
+.input-wrapper input,
+.select-wrapper select {
   width: 100%;
-  padding: 1.4rem;
-  border: 1px solid #e2e8f0;
-  border-radius: 0.6rem;
-  background-color: #ffffff;
+  padding: 1.6rem 2rem 1.6rem 4.5rem;
+  border: 1px solid var(--neutral-300);
+  border-radius: var(--border-radius);
   font-size: 1.6rem;
-  color: #0f172a;
-  transition: all 0.2s ease;
+  color: var(--text-primary);
+  background-color: var(--neutral-200);
+  transition: all var(--transition-fast);
 }
 
-.form-group input:focus,
-.form-group select:focus {
-  border-color: #0057b8;
-  box-shadow: 0 0 0 3px rgba(0, 87, 184, 0.1);
+.input-wrapper input:focus,
+.select-wrapper select:focus {
   outline: none;
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 4px rgba(0, 87, 184, 0.1);
+  background-color: var(--neutral-100);
 }
 
-.form-group input::placeholder {
-  color: #94a3b8;
+.input-wrapper input::placeholder {
+  color: var(--neutral-500);
 }
 
-.required-field label::after {
-  content: "*";
-  color: #ef4444;
-  margin-left: 0.4rem;
+.input-icon {
+  position: absolute;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--brand-primary);
+  font-size: 1.6rem;
+  pointer-events: none;
+  transition: color var(--transition-fast);
 }
 
+.select-wrapper::after {
+  content: '\f107';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--brand-primary);
+  pointer-events: none;
+}
+
+.input-wrapper:focus-within .input-icon {
+  color: var(--brand-primary-dark);
+}
+
+/* Submit Button */
 .form-submit {
-  margin-top: 3rem;
-  text-align: center;
+  margin-top: 3.5rem;
 }
 
-.btn-block {
+.btn-submit {
   width: 100%;
-  padding: 1.5rem;
+  padding: 1.6rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: var(--brand-primary);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
   font-size: 1.7rem;
   font-weight: 600;
-  background-color: #0057b8;
-  color: #ffffff;
-  border: none;
-  border-radius: 0.6rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 87, 184, 0.2);
 }
 
-.btn-block:hover {
-  background-color: #004295;
-  box-shadow: 0 4px 12px rgba(0, 87, 184, 0.2);
+.btn-submit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+}
+
+.btn-submit:hover {
+  background-color: var(--brand-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 87, 184, 0.3);
+}
+
+.btn-submit:hover::before {
+  animation: shine 1.5s infinite;
+}
+
+@keyframes shine {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.btn-text {
+  flex-grow: 1;
+  text-align: center;
 }
 
 .form-disclaimer {
   font-size: 1.3rem;
-  color: #64748b;
-  margin-top: 1.5rem;
+  color: var(--neutral-600);
   text-align: center;
+  margin-top: 1.5rem;
 }
 
+/* Trust Badges */
 .form-trust {
   display: flex;
-  justify-content: center;
-  gap: 3rem;
-  padding: 0 3rem 3rem;
+  justify-content: space-between;
+  padding: 0 3.5rem 3.5rem;
 }
 
 .trust-badge {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  font-size: 1.4rem;
-  color: #64748b;
+  gap: 1rem;
 }
 
-.trust-badge svg {
-  stroke: #0057b8;
+.badge-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  background-color: var(--brand-primary-light);
+  color: var(--brand-primary);
+  border-radius: 50%;
+}
+
+.trust-badge span {
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+  font-weight: 500;
 }
 
 /* Testimonial Card */
 .testimonial-card {
-  background-color: #ffffff;
-  border-radius: 1rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  padding: 3rem;
+  background-color: var(--neutral-100);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 3.5rem;
   position: relative;
-  top: 6rem;
+  transition: transform var(--transition), box-shadow var(--transition);
+  border: 1px solid var(--neutral-300);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.testimonial-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
 .testimonial-stars {
-  color: #ffbb00;
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
+  color: #FFC107;
+  font-size: 1.6rem;
+}
+
+.testimonial-source {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--success-light);
+  color: var(--success);
+  border-radius: 2rem;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .testimonial-quote {
   font-size: 1.7rem;
-  color: #334155;
   line-height: 1.6;
-  margin-bottom: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 2.5rem;
   font-style: italic;
+  position: relative;
+}
+
+.testimonial-quote::before,
+.testimonial-quote::after {
+  content: '"';
+  font-family: Georgia, serif;
+  font-size: 4rem;
+  color: var(--brand-primary-light);
+  position: absolute;
+  line-height: 0;
+}
+
+.testimonial-quote::before {
+  left: -1.5rem;
+  top: 1.5rem;
+}
+
+.testimonial-quote::after {
+  content: '"';
+  right: 0;
+  bottom: 0;
 }
 
 .testimonial-author {
@@ -1266,182 +1456,163 @@ input.error, select.error {
   gap: 1.5rem;
 }
 
-.testimonial-avatar {
-  width: 5rem;
-  height: 5rem;
+.author-avatar {
+  width: 5.5rem;
+  height: 5.5rem;
   border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--brand-primary-light);
+}
+
+.author-avatar img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
 .author-name {
   font-weight: 600;
-  color: #0f172a;
-  margin-bottom: 0.3rem;
   font-size: 1.6rem;
+  color: var(--text-primary);
+  margin: 0 0 0.3rem;
 }
 
 .author-location {
-  color: #64748b;
   font-size: 1.4rem;
+  color: var(--text-muted);
   margin: 0;
 }
 
-/* Media Queries */
-@media (max-width: 1024px) {
-  .hero h1 {
-    font-size: 4.6rem;
+/* Savings Badge */
+.savings-badge {
+  position: absolute;
+  top: -2rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--success), #1D9F6C);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 3rem;
+  box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+.savings-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.savings-amount {
+  display: block;
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+.savings-label {
+  display: block;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Form Animation Effects */
+.form-group label {
+  transform: translateY(0);
+  transition: transform var(--transition-fast);
+}
+
+.form-group input:focus + .input-icon + label,
+.form-group select:focus + label {
+  transform: translateY(-5px);
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .quote-grid {
+    gap: 2.5rem;
   }
   
-  .hero-tagline {
-    font-size: 2rem;
+  .form-header,
+  .quote-form,
+  .testimonial-card {
+    padding: 3rem;
+  }
+  
+  .form-trust {
+    padding: 0 3rem 3rem;
   }
 }
 
 @media (max-width: 991px) {
-  .quick-form-section .container {
+  .quote-grid {
     grid-template-columns: 1fr;
   }
   
   .testimonial-card {
-    top: 0;
-    margin-top: 3rem;
+    margin-top: 2rem;
+  }
+  
+  .form-trust {
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
   }
 }
 
-@media (max-width: 768px) {
-  .hero {
-    min-height: 500px;
-  }
-  
-  .hero h1 {
-    font-size: 3.8rem;
-  }
-  
-  .hero-tagline {
-    font-size: 1.8rem;
-  }
-  
-  .hero-features {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .hero-cta {
-    flex-direction: column;
-  }
-  
-  .btn-hero {
-    width: 100%;
-    justify-content: center;
+@media (max-width: 767px) {
+  .quote-section {
+    padding: 7rem 0;
   }
   
   .form-row {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-}
-
-@media (max-width: 576px) {
-  .hero {
-    min-height: 450px;
-  }
-  
-  .hero h1 {
-    font-size: 3.2rem;
-  }
-  
-  .hero-content {
-    padding: 6rem 0;
-  }
-  
-  .hero-tagline {
-    font-size: 1.6rem;
-    margin-bottom: 3rem;
-  }
-  
-  .form-header {
-    padding: 2rem;
-  }
   
   .form-header h2 {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
   }
   
-  .quote-form {
-    padding: 2rem;
+  .form-header,
+  .quote-form,
+  .testimonial-card {
+    padding: 2.5rem;
   }
   
   .form-trust {
+    padding: 0 2.5rem 2.5rem;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
   }
+  
+  .savings-badge {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin-top: 2rem;
+    align-self: flex-end;
+  }
 }
 
-/* ======================================================
-   7. Forms & Inputs - IMPROVED
-====================================================== */
-.lead-form-container {
-  background-color: var(--neutral-100);
-  border-radius: var(--border-radius-lg);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
-  padding: 3.5rem; /* More padding */
-  width: 100%;
-  border: 1px solid #e9ecef; /* Subtle border */
+@media (max-width: 480px) {
+  .trust-badge {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .testimonial-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
 }
-
-.lead-form h2 {
-  text-align: center;
-  margin-bottom: 3rem;
-  color: var(--text-heading);
-  position: relative;
-  padding-bottom: 1.5rem; /* Space for decorative element */
-}
-
-.lead-form h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 6rem;
-  height: 3px;
-  background-color: var(--brand-primary);
-  border-radius: 3px;
-}
-
-.form-group {
-  margin-bottom: 2.2rem; /* More space between form elements */
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.8rem;
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
-  padding: 1.4rem 1.6rem; /* Slightly taller inputs */
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  background-color: var(--neutral-100);
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-  color: var(--text-primary);
-  font-size: 1.6rem;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--brand-primary);
-  box-shadow: 0 0 0 3px rgba(0, 87, 184, 0.15);
-}
-
 /* ======================================================
    8. Buttons & CTAs - IMPROVED
 ====================================================== */
