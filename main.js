@@ -1,114 +1,226 @@
-/**
- * MechanicBoston.com - Combined JavaScript
- * Handles site-wide functionality including header, navigation, and form interactions
- */
-
+// HEADER JAVASCRIPT
 document.addEventListener('DOMContentLoaded', function() {
-    // ======================================================
-    // Header & Navigation Functionality
-    // ======================================================
+    // Header elements
     const header = document.querySelector('.site-header');
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     const mainNav = document.querySelector('.main-nav');
-    
-    // Create menu overlay for mobile
-    const menuOverlay = document.createElement('div');
-    menuOverlay.className = 'menu-overlay';
-    document.body.appendChild(menuOverlay);
+    const menuOverlay = document.querySelector('.menu-overlay');
+    const dropdowns = document.querySelectorAll('.has-dropdown');
     
     // Header scroll effect
-    window.addEventListener('scroll', function() {
+    function handleScroll() {
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
-    });
+    }
     
-    // Mobile menu toggle functionality
-    if (menuToggle && mainNav) {
-        menuToggle.addEventListener('click', function() {
-            const expanded = this.getAttribute('aria-expanded') === 'true' || false;
-            this.setAttribute('aria-expanded', !expanded);
-            mainNav.classList.toggle('active');
-            menuOverlay.classList.toggle('active');
-            document.body.style.overflow = expanded ? '' : 'hidden';
+    // Set current page in navigation
+    function setCurrentPage() {
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        navLinks.forEach(link => {
+            // Reset any current page indicators
+            link.removeAttribute('aria-current');
+            
+            // Get the href attribute
+            const href = link.getAttribute('href');
+            if (!href) return;
+            
+            // Convert to path
+            const linkPath = new URL(href, window.location.origin).pathname;
+            
+            // Check if this is the current page
+            if (currentPath === linkPath || 
+                (currentPath !== '/' && linkPath !== '/' && currentPath.includes(linkPath))) {
+                link.setAttribute('aria-current', 'page');
+            }
         });
     }
     
-    // Close menu when clicking outside or on overlay
-    menuOverlay.addEventListener('click', function() {
-        if (mainNav && mainNav.classList.contains('active')) {
-            mainNav.classList.remove('active');
+    // Toggle mobile menu
+    function toggleMobileMenu() {
+        const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', !expanded);
+        mainNav.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+        
+        // Prevent body scrolling when menu is open
+        document.body.style.overflow = expanded ? '' : 'hidden';
+    }
+    
+    // Toggle dropdown on mobile
+    function toggleDropdown(e) {
+        if (window.innerWidth >= 992) return;
+        
+        e.preventDefault();
+        const dropdown = this.closest('.has-dropdown');
+        
+        // Close other open dropdowns
+        dropdowns.forEach(d => {
+            if (d !== dropdown && d.classList.contains('active')) {
+                d.classList.remove('active');
+            }
+        });
+        
+        // Toggle this dropdown
+        dropdown.classList.toggle('active');
+    }
+    
+    // Close mobile menu when clicking outside
+    function handleOutsideClick(e) {
+        if (!mainNav.contains(e.target) && !menuToggle.contains(e.target) && mainNav.classList.contains('active')) {
             menuToggle.setAttribute('aria-expanded', 'false');
+            mainNav.classList.remove('active');
             menuOverlay.classList.remove('active');
             document.body.style.overflow = '';
         }
-    });
+    }
     
-    // Dropdown functionality for mobile
-    const dropdowns = document.querySelectorAll('.has-dropdown');
+    // Add hover effects to navigation items
+    function setupNavHoverEffects() {
+        const navItems = document.querySelectorAll('.nav-item');
+        
+        navItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                if (window.innerWidth < 992) return;
+                
+                navItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.style.opacity = '0.7';
+                    }
+                });
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                navItems.forEach(otherItem => {
+                    otherItem.style.opacity = '1';
+                });
+            });
+        });
+    }
+    
+    // Handle window resize
+    function handleResize() {
+        if (window.innerWidth >= 992) {
+            // Reset mobile menu state
+            menuToggle.setAttribute('aria-expanded', 'false');
+            mainNav.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            // Reset dropdown states
+            dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+        }
+    }
+    
+    // Enhance dropdown animation
+    function setupDropdownAnimation() {
+        if (window.innerWidth < 992) return;
+        
+        dropdowns.forEach(dropdown => {
+            const menu = dropdown.querySelector('.dropdown-menu');
+            const items = menu.querySelectorAll('li');
+            
+            // Set initial state
+            items.forEach((item, index) => {
+                item.style.transitionDelay = (index * 0.05) + 's';
+                item.style.transform = 'translateY(10px)';
+                item.style.opacity = '0';
+                item.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+            });
+            
+            // Animate in on hover
+            dropdown.addEventListener('mouseenter', function() {
+                items.forEach(item => {
+                    item.style.transform = 'translateY(0)';
+                    item.style.opacity = '1';
+                });
+            });
+            
+            // Reset on leave
+            dropdown.addEventListener('mouseleave', function() {
+                items.forEach(item => {
+                    item.style.transform = 'translateY(10px)';
+                    item.style.opacity = '0';
+                });
+            });
+        });
+    }
+    
+    // Add a subtle shine effect to the header for premium look
+    function addShineEffect() {
+        const headerContainer = header.querySelector('.container');
+        const shine = document.createElement('div');
+        shine.className = 'header-shine';
+        shine.style.position = 'absolute';
+        shine.style.top = '0';
+        shine.style.left = '-150%';
+        shine.style.width = '80%';
+        shine.style.height = '100%';
+        shine.style.background = 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%)';
+        shine.style.transform = 'skewX(-20deg)';
+        shine.style.pointerEvents = 'none';
+        shine.style.zIndex = '1';
+        headerContainer.appendChild(shine);
+        
+        // Animate the shine effect
+        setInterval(() => {
+            shine.style.transition = 'left 1.5s ease-in-out';
+            shine.style.left = '150%';
+            
+            setTimeout(() => {
+                shine.style.transition = 'none';
+                shine.style.left = '-150%';
+            }, 1500);
+        }, 6000);
+    }
+    
+    // Initialize event listeners
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+    
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', toggleMobileMenu);
+    }
+    
+    if (menuOverlay) {
+        menuOverlay.addEventListener('click', toggleMobileMenu);
+    }
+    
+    document.addEventListener('click', handleOutsideClick);
     
     dropdowns.forEach(dropdown => {
         const dropdownLink = dropdown.querySelector('a');
-        
-        dropdownLink.addEventListener('click', function(e) {
-            if (window.innerWidth < 992) {
-                e.preventDefault();
-                dropdown.classList.toggle('active');
+        dropdownLink.addEventListener('click', toggleDropdown);
+    });
+    
+    // Initialize
+    handleScroll();
+    setCurrentPage();
+    setupNavHoverEffects();
+    setupDropdownAnimation();
+    addShineEffect();
+    
+    // Extra touch: Add service data attributes to quote buttons
+    const serviceLinks = document.querySelectorAll('[data-service]');
+    serviceLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // If this is a link to the quote form
+            if (link.getAttribute('href').includes('#quote-form')) {
+                const service = link.getAttribute('data-service');
+                // Store selected service in sessionStorage for the quote form
+                if (service) {
+                    sessionStorage.setItem('selectedService', service);
+                }
             }
         });
     });
-    
-    // Add subtle hover effects to nav items
-    const navItems = document.querySelectorAll('.main-nav > ul > li > a:not(.btn)');
-    
-    navItems.forEach(item => {
-        item.addEventListener('mouseenter', function() {
-            navItems.forEach(otherItem => {
-                if (otherItem !== item) {
-                    otherItem.style.opacity = '0.7';
-                }
-            });
-        });
-        
-        item.addEventListener('mouseleave', function() {
-            navItems.forEach(otherItem => {
-                otherItem.style.opacity = '1';
-            });
-        });
-    });
-    
-    // Enhanced dropdown animation
-    const dropdownMenus = document.querySelectorAll('.dropdown-menu');
-    
-    dropdownMenus.forEach(menu => {
-        const items = menu.querySelectorAll('li');
-        
-        items.forEach((item, index) => {
-            item.style.transitionDelay = (index * 0.05) + 's';
-            item.style.transform = 'translateY(10px)';
-            item.style.opacity = '0';
-            item.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
-        });
-        
-        const parentDropdown = menu.closest('.has-dropdown');
-        
-        parentDropdown.addEventListener('mouseenter', function() {
-            items.forEach(item => {
-                item.style.transform = 'translateY(0)';
-                item.style.opacity = '1';
-            });
-        });
-        
-        parentDropdown.addEventListener('mouseleave', function() {
-            items.forEach(item => {
-                item.style.transform = 'translateY(10px)';
-                item.style.opacity = '0';
-            });
-        });
-    });
-
+});
     // ======================================================
     // Form Handling and Validation
     // ======================================================
