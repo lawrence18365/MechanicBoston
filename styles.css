@@ -1544,51 +1544,290 @@ select {
 /* ======================================================
    10. Map Styles
 ====================================================== */
+/* ======================================================
+   PREMIUM MAP SECTION REDESIGN
+   Transforms the bland map section into a branded,
+   dynamic, and visually stunning component
+====================================================== */
+
+/* Main Map Section Styling */
 .coverage-map {
-  padding: 4rem 0;
-  background-color: #f7f9fc;
+  padding: 8rem 0;
+  background: linear-gradient(135deg, var(--brand-primary-dark) 0%, var(--brand-primary) 100%);
+  position: relative;
+  overflow: hidden;
+  color: var(--neutral-100);
 }
 
+/* Grid pattern background for depth */
+.coverage-map::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  z-index: 1;
+}
+
+/* Subtle accent wave for visual interest */
+.coverage-map::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='rgba(255, 107, 53, 0.1)' d='M0,192L48,181.3C96,171,192,149,288,154.7C384,160,480,192,576,192C672,192,768,160,864,160C960,160,1056,192,1152,197.3C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+  opacity: 0.8;
+}
+
+.coverage-map .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Section heading with premium styling */
+.coverage-map h2 {
+  color: white;
+  text-align: center;
+  margin-bottom: 4rem;
+  font-size: 3.6rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
+  display: block;
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+/* Custom underline for the heading */
+.coverage-map h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8rem;
+  height: 3px;
+  background: var(--brand-secondary);
+  border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.5);
+}
+
+/* Main map container with premium styling */
 .map-container {
   position: relative;
-  border-radius: 8px;
+  border-radius: 1.2rem;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  margin-top: 2rem;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+    0 10px 20px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  margin: 0 auto;
+  max-width: 1000px;
+  transform: perspective(1000px) rotateX(2deg);
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.map-container:hover {
+  transform: perspective(1000px) rotateX(0deg) translateY(-5px);
+  box-shadow: 
+    0 30px 60px -15px rgba(0, 0, 0, 0.3),
+    0 15px 30px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+/* Map image styling with monochrome blue filter */
 .map-container img {
   width: 100%;
   height: auto;
   display: block;
+  filter: grayscale(85%) sepia(20%) hue-rotate(190deg) saturate(80%) brightness(0.9) contrast(1.1);
+  mix-blend-mode: luminosity;
+  transition: all 0.4s ease;
+  transform-origin: center;
 }
 
+.map-container:hover img {
+  filter: grayscale(70%) sepia(30%) hue-rotate(190deg) saturate(100%) brightness(1) contrast(1.1);
+}
+
+/* Map overlay with animated pinpoints */
+.map-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Location markers that pulse and glow */
+.location-marker {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--brand-secondary);
+  box-shadow: 0 0 0 rgba(255, 107, 53, 0.4);
+  animation: pulse 2s infinite;
+  transform: translate(-50%, -50%);
+}
+
+/* Location marker #1 - Downtown */
+.marker-1 {
+  top: 45%;
+  left: 52%;
+  animation-delay: 0s;
+}
+
+/* Location marker #2 - Cambridge */
+.marker-2 {
+  top: 32%;
+  left: 48%;
+  animation-delay: 0.3s;
+}
+
+/* Location marker #3 - South Boston */
+.marker-3 {
+  top: 58%;
+  left: 56%;
+  animation-delay: 0.6s;
+}
+
+/* Location marker #4 - Brookline */
+.marker-4 {
+  top: 40%;
+  left: 35%;
+  animation-delay: 0.9s;
+}
+
+/* Location marker #5 - Somerville */
+.marker-5 {
+  top: 22%;
+  left: 42%;
+  animation-delay: 1.2s;
+}
+
+/* Pulse animation for location markers */
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.6);
+  }
+  
+  70% {
+    transform: translate(-50%, -50%) scale(1.3);
+    box-shadow: 0 0 0 10px rgba(255, 107, 53, 0);
+  }
+  
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 107, 53, 0);
+  }
+}
+
+/* Premium legend styling */
 .map-legend {
   display: flex;
   justify-content: space-around;
-  padding: 1.5rem;
-  background-color: #fff;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  padding: 2rem;
+  background: linear-gradient(to right, rgba(10, 35, 66, 0.9), rgba(10, 35, 66, 0.95));
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
+/* Styled marker for legend */
 .legend-marker {
-  width: 12px;
-  height: 12px;
-  background-color: #4285f4;
+  width: 14px;
+  height: 14px;
+  background-color: var(--brand-secondary);
   border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 107, 53, 0.6);
 }
 
+/* Stats counter styling */
 .legend-count {
   font-weight: 700;
-  font-size: 1.25rem;
-  color: #3b71ca;
+  font-size: 2rem;
+  color: var(--brand-secondary);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Legend text styling */
+.legend-item p {
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+/* Add a 3D floating card effect to the entire map */
+@keyframes float {
+  0% {
+    transform: translateZ(0) translateY(0);
+  }
+  50% {
+    transform: translateZ(20px) translateY(-5px);
+  }
+  100% {
+    transform: translateZ(0) translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .coverage-map h2 {
+    font-size: 3rem;
+  }
+
+  .map-legend {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  
+  .legend-item {
+    flex-basis: 45%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .coverage-map {
+    padding: 6rem 0;
+  }
+  
+  .coverage-map h2 {
+    font-size: 2.6rem;
+  }
+  
+  .map-legend {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2.5rem 2rem;
+  }
+  
+  .legend-item {
+    flex-basis: 100%;
+  }
 }
 
 /* ======================================================
