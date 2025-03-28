@@ -124,146 +124,93 @@
         </div>
     </div>
 </section>
-<!-- Premium Quote Section with Enhanced Background -->
 <section class="quote-section" id="quote-form">
-    <!-- Premium Background Elements -->
-    <div class="floating-graphic graphic-1"></div>
-    <div class="floating-graphic graphic-2"></div>
-    <div class="floating-graphic graphic-3"></div>
-    
-    <!-- Light Particle Effects -->
-    <div class="particle particle-1"></div>
-    <div class="particle particle-2"></div>
-    <div class="particle particle-3"></div>
-    <div class="particle particle-4"></div>
-    <div class="particle particle-5"></div>
-    
-    <!-- 3D accent corner -->
-    <div class="accent-corner"></div>
-    
     <div class="container">
-        <div class="quote-grid">
-            <!-- Main Form Card -->
-            <div class="form-card">
-                <div class="form-header">
-                    <span class="form-badge">Boston's Trusted Mechanics</span>
-                    <h2>Get Free Quotes in Minutes</h2>
-                    <p class="form-subtitle">Most drivers receive 3+ competitive quotes within 1 hour</p>
-                </div>
-                
+        <div class="section-header">
+            <h2>Boston's Trusted Mechanics</h2>
+            <p class="section-subheading">Get quotes from certified professionals in your area</p>
+        </div>
+        
+        <div class="quote-container">
+            <!-- Main quote form -->
+            <div class="quote-form-wrapper">
                 <form id="quick-quote-form" class="quote-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="service-type">Service Needed <span class="required">*</span></label>
-                            <div class="select-wrapper">
-                                <select id="service-type" name="service-type" required>
-                                    <option value="" disabled selected>Select service type</option>
-                                    <option value="brake-repair">Brake Repair</option>
-                                    <option value="transmission">Transmission Service</option>
-                                    <option value="emergency">Emergency Towing</option>
-                                    <option value="oil-change">Oil Change</option>
-                                    <option value="check-engine">Check Engine Light</option>
-                                    <option value="other">Other Service</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="zip-code">ZIP Code <span class="required">*</span></label>
-                            <div class="input-wrapper">
-                                <input type="text" id="zip-code" name="zip-code" placeholder="Enter your ZIP code" pattern="[0-9]{5}" maxlength="5" required>
-                                <div class="input-icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="form-heading">
+                        <h3>Get Free Quote</h3>
+                        <p>Most customers receive quotes within 1 hour</p>
                     </div>
                     
-                    <div class="form-row">  
-                        <div class="form-group">
-                            <label for="phone">Phone Number <span class="required">*</span></label>
-                            <div class="input-wrapper">
-                                <input type="tel" id="phone" name="phone" placeholder="(617) 555-1234" required>
-                                <div class="input-icon">
-                                    <i class="fas fa-phone-alt"></i>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="description">Brief Description <span class="optional">(Optional)</span></label>
-                            <div class="input-wrapper">
-                                <input type="text" id="description" name="description" placeholder="E.g., Grinding brakes, transmission slipping">
-                                <div class="input-icon">
-                                    <i class="fas fa-car"></i>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label for="service-type">Service Needed</label>
+                        <select id="service-type" name="service-type" required>
+                            <option value="" disabled selected>Select service type</option>
+                            <option value="brake-repair">Brake Repair</option>
+                            <option value="transmission">Transmission Service</option>
+                            <option value="emergency">Emergency Towing</option>
+                            <option value="oil-change">Oil Change</option>
+                            <option value="check-engine">Check Engine Light</option>
+                            <option value="other">Other Service</option>
+                        </select>
                     </div>
                     
-                    <div class="form-submit">
-                        <button type="submit" class="btn-submit">
-                            <span class="btn-text">Compare Free Quotes Now</span>
-                            <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
-                        </button>
-                        <p class="form-disclaimer">By submitting, you agree to be contacted by mechanics in our network.</p>
+                    <div class="form-group">
+                        <label for="zip-code">ZIP Code</label>
+                        <input type="text" id="zip-code" name="zip-code" placeholder="Enter ZIP code" maxlength="5" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(617) 555-1234" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Brief Description <span>(Optional)</span></label>
+                        <input type="text" id="description" name="description" placeholder="E.g., Grinding brakes, transmission issues">
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">Compare Free Quotes</button>
+                    
+                    <div class="form-trust">
+                        <div class="trust-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Secure & Confidential</span>
+                        </div>
+                        <div class="trust-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>No Obligation</span>
+                        </div>
                     </div>
                 </form>
-                
-                <div class="form-trust">
-                    <div class="trust-badge">
-                        <div class="badge-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <span>Secure & Confidential</span>
-                    </div>
-                    <div class="trust-badge">
-                        <div class="badge-icon">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <span>No Obligation</span>
-                    </div>
-                    <div class="trust-badge">
-                        <div class="badge-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <span>Fast Response</span>
-                    </div>
-                </div>
             </div>
             
-            <!-- Testimonial Card -->
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+            <!-- Testimonial -->
+            <div class="testimonial-wrapper">
+                <div class="testimonial">
+                    <div class="testimonial-heading">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="testimonial-tag">Verified</div>
                     </div>
-                    <div class="testimonial-source">Verified Customer</div>
-                </div>
-                
-                <p class="testimonial-quote">"MechanicBoston connected me with 3 qualified mechanics within an hour. I saved $350 on my transmission repair by comparing quotes!"</p>
-                
-                <div class="testimonial-author">
-                    <div class="author-avatar">
+                    
+                    <blockquote>
+                        "MechanicBoston connected me with 3 qualified mechanics within an hour. I saved $350 on my transmission repair!"
+                    </blockquote>
+                    
+                    <div class="testimonial-author">
                         <img src="assets/images/testimonial-avatar.jpg" alt="Michael Johnson">
+                        <div>
+                            <p class="author-name">Michael Johnson</p>
+                            <p class="author-location">Dorchester, Boston</p>
+                        </div>
                     </div>
-                    <div class="author-info">
-                        <p class="author-name">Michael Johnson</p>
-                        <p class="author-location">Dorchester, Boston</p>
-                    </div>
-                </div>
-                
-                <div class="savings-badge">
-                    <div class="savings-icon">
-                        <i class="fas fa-dollar-sign"></i>
-                    </div>
-                    <div class="savings-text">
-                        <span class="savings-amount">$350</span>
-                        <span class="savings-label">Saved</span>
+                    
+                    <div class="savings-highlight">
+                        <span>$350 Saved</span>
                     </div>
                 </div>
             </div>
