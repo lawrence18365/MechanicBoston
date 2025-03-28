@@ -1,0 +1,1017 @@
+/*
+ * MechanicBoston.com - Premium Location Pages
+ * Enhanced styling for neighborhood-specific pages
+ * Version: 2.0
+ */
+
+/* ======================================================
+   Neighborhood Hero Section
+====================================================== */
+.neighborhood-hero {
+  position: relative;
+  padding: 8rem 0;
+  background: linear-gradient(135deg, rgba(0, 87, 184, 0.05) 0%, rgba(255, 85, 0, 0.02) 100%);
+  overflow: hidden;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.neighborhood-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/patterns/blueprint-pattern.svg');
+  background-size: 300px;
+  opacity: 0.04;
+  z-index: 0;
+}
+
+.neighborhood-hero .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.neighborhood-hero-content {
+  padding-right: 2rem;
+}
+
+.neighborhood-hero h1 {
+  font-size: 4.2rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  color: var(--text-heading);
+  line-height: 1.2;
+  position: relative;
+}
+
+.neighborhood-hero h1::after {
+  content: '';
+  position: absolute;
+  bottom: -0.8rem;
+  left: 0;
+  width: 5rem;
+  height: 0.4rem;
+  background: linear-gradient(90deg, var(--brand-primary), var(--brand-secondary));
+  border-radius: 0.2rem;
+}
+
+.neighborhood-hero p {
+  font-size: 1.8rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  max-width: 54rem;
+}
+
+.neighborhood-hero-image {
+  position: relative;
+  z-index: 1;
+}
+
+.neighborhood-hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  transform: perspective(1000px) rotateY(-3deg);
+  transition: transform var(--transition);
+}
+
+.neighborhood-hero-image:hover img {
+  transform: perspective(1000px) rotateY(0deg);
+}
+
+.neighborhood-hero-image::before {
+  content: '';
+  position: absolute;
+  top: -2rem;
+  right: -2rem;
+  width: 8rem;
+  height: 8rem;
+  background: linear-gradient(135deg, rgba(255, 85, 0, 0.15) 0%, rgba(0, 87, 184, 0.15) 100%);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.neighborhood-hero-image::after {
+  content: '';
+  position: absolute;
+  bottom: -1.5rem;
+  left: -1.5rem;
+  width: 5rem;
+  height: 5rem;
+  background: linear-gradient(135deg, rgba(0, 87, 184, 0.1) 0%, rgba(255, 85, 0, 0.1) 100%);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* ======================================================
+   Local Service Features
+====================================================== */
+.local-features {
+  padding: 8rem 0;
+  background-color: var(--neutral-100);
+  position: relative;
+}
+
+.local-features h2 {
+  text-align: center;
+  margin-bottom: 5rem;
+  font-size: 3.2rem;
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+.local-features h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6rem;
+  height: 3px;
+  background-color: var(--brand-primary);
+  border-radius: 3px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  gap: 3rem;
+}
+
+.feature-card {
+  background-color: var(--neutral-100);
+  border-radius: var(--border-radius-lg);
+  padding: 3.5rem 3rem;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform var(--transition), box-shadow var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.feature-card:hover {
+  transform: translateY(-0.8rem);
+  box-shadow: var(--shadow-lg);
+}
+
+.feature-card img {
+  height: 6rem;
+  width: auto;
+  margin-bottom: 2rem;
+  transition: transform 0.5s ease;
+}
+
+.feature-card:hover img {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.feature-card h3 {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  color: var(--text-heading);
+}
+
+.feature-card p {
+  color: var(--text-secondary);
+  margin-bottom: 0;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+/* ======================================================
+   Neighborhood Map
+====================================================== */
+.neighborhood-map {
+  padding: 8rem 0;
+  background-color: var(--neutral-200);
+  position: relative;
+  overflow: hidden;
+}
+
+.neighborhood-map::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/patterns/topography.svg');
+  background-size: 500px;
+  opacity: 0.05;
+  z-index: 0;
+}
+
+.neighborhood-map h2 {
+  text-align: center;
+  margin-bottom: 4rem;
+  font-size: 3.2rem;
+  position: relative;
+  padding-bottom: 1.5rem;
+  z-index: 1;
+}
+
+.neighborhood-map h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6rem;
+  height: 3px;
+  background-color: var(--brand-primary);
+  border-radius: 3px;
+}
+
+.map-container {
+  position: relative;
+  background-color: var(--neutral-100);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  z-index: 1;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.map-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.map-container:hover img {
+  transform: scale(1.02);
+}
+
+.map-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 32rem;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  padding: 3rem;
+  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.map-overlay h3 {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  color: var(--text-heading);
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.map-overlay h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 4rem;
+  height: 2px;
+  background-color: var(--brand-primary);
+  border-radius: 2px;
+}
+
+.area-list {
+  list-style: none;
+  columns: 2;
+  column-gap: 2rem;
+}
+
+.area-list li {
+  position: relative;
+  padding: 0.8rem 0 0.8rem 2.4rem;
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.area-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1.4rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  background-color: var(--brand-primary);
+  border-radius: 50%;
+}
+
+/* ======================================================
+   Popular Services
+====================================================== */
+.popular-services {
+  padding: 8rem 0;
+  background-color: var(--neutral-100);
+  position: relative;
+}
+
+.popular-services h2 {
+  text-align: center;
+  margin-bottom: 5rem;
+  font-size: 3.2rem;
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+.popular-services h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6rem;
+  height: 3px;
+  background-color: var(--brand-primary);
+  border-radius: 3px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+  gap: 3rem;
+}
+
+.service-card {
+  background-color: var(--neutral-100);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.service-card:hover {
+  transform: translateY(-0.8rem);
+  box-shadow: var(--shadow-lg);
+}
+
+.service-card img {
+  width: 100%;
+  height: 22rem;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.service-card:hover img {
+  transform: scale(1.05);
+}
+
+.service-card h3 {
+  padding: 2.5rem 2.5rem 1rem;
+  font-size: 2.2rem;
+  color: var(--text-heading);
+}
+
+.service-card p {
+  padding: 0 2.5rem;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+  font-size: 1.6rem;
+}
+
+.service-card a {
+  margin: 0 2.5rem 2.5rem;
+  display: inline-block;
+}
+
+/* ======================================================
+   Quote Form Section
+====================================================== */
+.quote-section {
+  padding: 9rem 0;
+  background-color: #f5f9fd;
+  position: relative;
+}
+
+.quote-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/patterns/circuit-board.svg');
+  background-size: 1000px;
+  opacity: 0.05;
+  z-index: 0;
+}
+
+.quote-form-wrapper {
+  max-width: 80rem;
+  margin: 0 auto;
+  background-color: var(--neutral-100);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  padding: 4rem;
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.quote-form-wrapper h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 3.2rem;
+  color: var(--text-heading);
+}
+
+.quote-form-wrapper > p {
+  text-align: center;
+  margin-bottom: 4rem;
+  color: var(--text-secondary);
+  font-size: 1.7rem;
+}
+
+.service-form .form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.service-form .form-group {
+  margin-bottom: 2.2rem;
+}
+
+.service-form label {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+}
+
+.service-form input,
+.service-form select,
+.service-form textarea {
+  width: 100%;
+  padding: 1.4rem 1.6rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--neutral-100);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  color: var(--text-primary);
+  font-size: 1.6rem;
+}
+
+.service-form input:focus,
+.service-form select:focus,
+.service-form textarea:focus {
+  outline: none;
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 3px rgba(0, 87, 184, 0.15);
+}
+
+.service-form .required-field label::after {
+  content: "*";
+  color: #ef4444;
+  margin-left: 0.4rem;
+}
+
+.service-form .urgency-group {
+  margin-bottom: 3rem;
+}
+
+.service-form .radio-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.service-form .radio-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  transition: all var(--transition-fast);
+}
+
+.service-form .radio-label:hover {
+  background-color: #f5f9fd;
+  border-color: #cfdcec;
+}
+
+.service-form .radio-label input[type="radio"] {
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  margin: 0;
+  position: relative;
+  transition: all var(--transition-fast);
+}
+
+.service-form .radio-label input[type="radio"]:checked {
+  border-color: var(--brand-primary);
+  border-width: 5px;
+}
+
+.service-form .radio-label span {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+}
+
+.service-form .consent-group {
+  margin-bottom: 3rem;
+}
+
+.service-form .checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  cursor: pointer;
+}
+
+.service-form .checkbox-label input[type="checkbox"] {
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid var(--border-color);
+  border-radius: 0.4rem;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  margin: 0;
+  margin-top: 0.2rem;
+  position: relative;
+  transition: all var(--transition-fast);
+}
+
+.service-form .checkbox-label input[type="checkbox"]:checked {
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary);
+}
+
+.service-form .checkbox-label input[type="checkbox"]:checked::before {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.service-form .checkbox-label span {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.service-form .btn-block {
+  padding: 1.6rem;
+  font-size: 1.7rem;
+  font-weight: 600;
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary);
+  border-radius: 0.6rem;
+  box-shadow: 0 5px 15px rgba(0, 87, 184, 0.25);
+  transition: all 0.3s ease;
+}
+
+.service-form .btn-block:hover {
+  background-color: var(--brand-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 87, 184, 0.3);
+}
+
+/* ======================================================
+   Local Shops
+====================================================== */
+.local-shops {
+  padding: 8rem 0;
+  background-color: var(--neutral-100);
+}
+
+.local-shops h2 {
+  text-align: center;
+  margin-bottom: 5rem;
+  font-size: 3.2rem;
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+.local-shops h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6rem;
+  height: 3px;
+  background-color: var(--brand-primary);
+  border-radius: 3px;
+}
+
+.shops-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+  gap: 3rem;
+}
+
+.shop-card {
+  background-color: var(--neutral-100);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.shop-card:hover {
+  transform: translateY(-0.8rem);
+  box-shadow: var(--shadow-lg);
+}
+
+.shop-card img {
+  width: 100%;
+  height: 22rem;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.shop-card:hover img {
+  transform: scale(1.05);
+}
+
+.shop-card h3 {
+  padding: 2.5rem 2.5rem 0.5rem;
+  font-size: 2.2rem;
+  color: var(--text-heading);
+}
+
+.shop-rating {
+  padding: 0 2.5rem;
+  color: #FFD700;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.shop-rating span {
+  color: var(--text-secondary);
+  font-size: 1.4rem;
+  margin-left: 0.5rem;
+}
+
+.shop-address {
+  padding: 0 2.5rem;
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.shop-specialties {
+  padding: 0 2.5rem;
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.shop-card .btn {
+  margin: 0 2.5rem 2.5rem;
+  display: inline-block;
+}
+
+/* ======================================================
+   Local Information
+====================================================== */
+.local-info {
+  padding: 8rem 0;
+  background-color: var(--neutral-200);
+  position: relative;
+}
+
+.local-info h2 {
+  text-align: center;
+  margin-bottom: 5rem;
+  font-size: 3.2rem;
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+.local-info h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6rem;
+  height: 3px;
+  background-color: var(--brand-primary);
+  border-radius: 3px;
+}
+
+.info-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.info-text h3 {
+  font-size: 2.4rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-heading);
+}
+
+.info-text p {
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+}
+
+.info-text ul {
+  margin-bottom: 2.5rem;
+  padding-left: 2rem;
+}
+
+.info-text li {
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.info-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.info-card {
+  background-color: var(--neutral-100);
+  border-radius: var(--border-radius-lg);
+  padding: 3rem;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.info-card h4 {
+  font-size: 1.9rem;
+  margin-bottom: 2rem;
+  color: var(--text-heading);
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.info-card h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 3.5rem;
+  height: 2px;
+  background-color: var(--brand-primary);
+  border-radius: 2px;
+}
+
+.info-card p {
+  font-size: 1.5rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+.cost-list {
+  list-style: none;
+}
+
+.cost-list li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed var(--border-color);
+  padding: 1.2rem 0;
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.cost-list li:last-child {
+  border-bottom: none;
+}
+
+.cost-list li span {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ======================================================
+   Responsive Styles
+====================================================== */
+@media (max-width: 1100px) {
+  .neighborhood-hero .container {
+    gap: 3rem;
+  }
+  
+  .map-overlay {
+    width: 28rem;
+    padding: 2.5rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .neighborhood-hero .container {
+    grid-template-columns: 1fr;
+  }
+  
+  .neighborhood-hero-content {
+    order: 1;
+    padding-right: 0;
+    text-align: center;
+  }
+  
+  .neighborhood-hero h1::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .neighborhood-hero-image {
+    order: 0;
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  
+  .info-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .info-sidebar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  }
+}
+
+@media (max-width: 767.98px) {
+  .map-overlay {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    background-color: var(--neutral-100);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+  }
+  
+  .map-overlay h3 {
+    text-align: center;
+  }
+  
+  .map-overlay h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .area-list {
+    columns: 3;
+  }
+  
+  .service-form .radio-group {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .neighborhood-hero {
+    padding: 6rem 0;
+  }
+  
+  .neighborhood-hero h1 {
+    font-size: 3.6rem;
+  }
+  
+  .features-grid,
+  .services-grid,
+  .shops-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-form .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .quote-form-wrapper {
+    padding: 3rem 2rem;
+  }
+  
+  .area-list {
+    columns: 2;
+  }
+  
+  .info-sidebar {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ======================================================
+   Animation Enhancements
+====================================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.neighborhood-hero-content,
+.neighborhood-hero-image,
+.feature-card,
+.service-card,
+.shop-card,
+.info-card {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.feature-card:nth-child(2),
+.service-card:nth-child(2),
+.shop-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.feature-card:nth-child(3),
+.service-card:nth-child(3),
+.shop-card:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.feature-card:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+/* Add subtle hover effects */
+.btn,
+.feature-card,
+.service-card,
+.shop-card,
+.info-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.feature-card:hover,
+.service-card:hover,
+.shop-card:hover {
+  background-color: #fafcff;
+}
+
+/* ======================================================
+   Print Styles
+====================================================== */
+@media print {
+  .neighborhood-hero,
+  .local-features,
+  .neighborhood-map,
+  .popular-services,
+  .local-shops,
+  .local-info {
+    page-break-inside: avoid;
+  }
+  
+  .quote-section,
+  .emergency-cta,
+  .site-footer,
+  .site-header {
+    display: none;
+  }
+  
+  .neighborhood-hero-image::before,
+  .neighborhood-hero-image::after {
+    display: none;
+  }
+  
+  .feature-card,
+  .service-card,
+  .shop-card,
+  .info-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}
